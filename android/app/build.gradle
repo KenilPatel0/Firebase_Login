@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services' version '4.3.10' // Specify the version of the Google services plugin
+
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id 'dev.flutter.flutter-gradle-plugin'
+}
+
+android {
+    compileSdkVersion flutter.compileSdkVersion.toInteger()
+    buildToolsVersion flutter.buildToolsVersion
+    defaultConfig {
+        applicationId "com.example.firebase"
+        minSdkVersion flutter.minSdkVersion.toInteger()
+        targetSdkVersion flutter.targetSdkVersion.toInteger()
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+}
+
+flutter {
+    source '../..'
+}
